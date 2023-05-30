@@ -650,7 +650,7 @@ function skillsClick()
     if(tutorialProgress == 3)
     {
         myPopup.classList.add("show");
-        document.getElementById("pBox").innerHTML = "Click the icons to level up. Once you are done click on the shop to view swords for sale. Good luck on your quest!";
+        document.getElementById("pBox").innerHTML = "Click the icons to level up. Once you are done you can use the buttons in the bottom left corner to navigate between zones. Make sure to check out the shop and good luck on your quest!";
         tutorialProgress += 1;
     }
 }
