@@ -7,15 +7,16 @@ var currentColor = 0;
 //enemy variables
 var images = [["dragonImages2/zone0/enemy1.png","dragonImages2/zone0/enemy2.png","","dragonImages2/zone0/boss.png"],
               ["dragonImages2/zone1/enemy1.png","dragonImages2/zone1/enemy2.png","dragonImages2/zone1/enemy3.png","dragonImages2/zone1/miniboss.png","dragonImages2/zone1/boss.png"],
-              ["dragonImages2/zone2/enemy1.png","dragonImages2/zone2/enemy2.png","dragonImages2/zone2/miniboss.png","dragonImages2/zone2/boss.png"]];
+              ["dragonImages2/zone2/enemy1.png","dragonImages2/zone2/enemy2.png","dragonImages2/zone2/miniboss.png","dragonImages2/zone2/boss.png"],
+              ["dragonImages2/zone3/enemy1.png","dragonImages2/zone3/enemy2.png","dragonImages2/zone3/enemy3.png","dragonImages2/zone3/miniboss.png","dragonImages2/zone3/boss.png"]];
 var currentEnemy = 0;
 var currentHealth = 5;
 var maxHealth = 5;
 
 //zone variables
-backgrounds = ["url('dragonImages2/backgrounds/dungeon.jpg')","url('dragonImages2/backgrounds/forest.jpg')","url('dragonImages2/backgrounds/field.png')"]
-var freeplayOn = [false,false,false];
-var progress = [0,0,0];
+backgrounds = ["url('dragonImages2/backgrounds/corner.jpg')","url('dragonImages2/backgrounds/rotunda.jpg')","url('dragonImages2/backgrounds/brown.jpg')","url('dragonImages2/backgrounds/tunnels.png')"]
+var freeplayOn = [false,false,false,false];
+var progress = [0,0,0,0];
 var currentZone = 0;
 
 //currency variables
@@ -24,6 +25,7 @@ var xp = 0;
 
 //level variables
 var pCost = 5;
+var hCost = 5;
 var powerSave = 1;
 var power = 1;
 var mana = 1;
@@ -34,12 +36,12 @@ var tutorialProgress = 1;
 
 
 //shop variables
-var swordEquiped = [false,false];
-var swordOwned = [false,false];
-var swordMultipliers=[1.5,2]
-var swordPrices = [500,1000];
-var shopItems = [["dragonImages2/icons/wSword.jpg","weapon w0"],["dragonImages2/icons/rSword.png","weapon w1"]]
-var cursors = ["url('dragonImages2/cursors/woodenCursor.cur'), auto","url('dragonImages2/cursors/rootCursor.cur'), auto"]
+var swordEquiped = [false,false,false,false];
+var swordOwned = [false,false,false,false];
+var swordMultipliers=[1.5,2,3,10]
+var swordPrices = [100,500,2000,10000];
+var shopItems = [["dragonImages2/icons/wSword.jpg","weapon w0"],["dragonImages2/icons/rSword.png","weapon w1"],["dragonImages2/icons/iSword.jpg","weapon w2"],["dragonImages2/icons/dSword.png","weapon w3"]]
+var cursors = ["url('dragonImages2/cursors/woodenCursor.cur'), auto","url('dragonImages2/cursors/rootCursor.cur'), auto","url('dragonImages2/cursors/ironCursor.cur'), auto","url('dragonImages2/cursors/demonCursor.cur'), auto"]
 var currentSword = -1;
 var swordMultiplier = 1;
 
@@ -49,13 +51,24 @@ function update()
     document.getElementById("xp").innerHTML = "XP: " + xp;
     document.getElementById("gold").innerHTML = "Gold: " + gold;
     power = Math.round(powerSave*swordMultiplier);
-
+    if(!interval)
+    {
+        pCurrentHealth = pMaxHealth;
+    }
+    document.getElementById("healthText").innerHTML = pCurrentHealth + "/" + pMaxHealth;
     var paras = document.getElementsByClassName('slashClass');
 
     while(paras[0]) {
         document.getElementById("slash").removeChild(paras[0]);
     }
 }
+
+
+closePopup.addEventListener("click", function () {
+    myPopup.classList.remove("show");
+});
+
+
 
 var garbageBin;
 window.onload = function ()
@@ -66,7 +79,8 @@ if (typeof(garbageBin) === 'undefined')
     garbageBin.style.display = 'none';
     document.body.appendChild(garbageBin);
     }
-    alert("click on the enemy to attack!")
+    myPopup.classList.add("show");
+    document.getElementById("pBox").innerHTML = "Click on the enemy to attack!";
 }
 
 function discardElement(element)
@@ -384,7 +398,8 @@ function enemyProgress(num) {
                 endDamage();
                 if(tutorialProgress == 2)
                 {
-                    alert("You defeated the boss! Open the level up menu above your inventory to level up.")
+                    myPopup.classList.add("show");
+                    document.getElementById("pBox").innerHTML = "You defeated the boss! Open the menu labled \"Level Up\" to increase your stats!";
                     tutorialProgress += 1;
                 }
             }
@@ -399,7 +414,8 @@ function enemyProgress(num) {
                 destroyEnemy(num);
                 if(tutorialProgress == 1)
                 {
-                    alert("A boss is about to spawn! Defeat it before it kills you.")
+                    myPopup.classList.add("show");
+                    document.getElementById("pBox").innerHTML = "Defeat the boss before it kills you!";
                     tutorialProgress += 1;
                 }
                 spawn(1,num);
@@ -437,6 +453,12 @@ function enemyProgress(num) {
                 }
                 document.getElementById("backButton").style.visibility="visible";
                 endDamage();
+                if(currentZone==3)
+                {
+                    myPopup.classList.add("show");
+                    document.getElementById("pBox2").innerHTML = "You win!";
+                    document.getElementById("pBox").innerHTML = "";
+                }
             }
             else
             {
@@ -513,8 +535,8 @@ function freeplay(num)
 
 function destroyEnemy(num)
 {
-        const xpTable = [[1,1,0,3],[1,2,1,10,50],[5,7,150,1000]];
-        const goldTable = [[1,1,0,2],[2,3,1,8,100],[5,5,10,1000]];
+        const xpTable = [[1,1,0,10],[5,10,5,25,75],[20,35,125,500],[100,150,200,4000,10000]];
+        const goldTable = [[1,1,0,10],[10,5,1,50,100],[35,20,200,1000],[150,100,500,5000,100000]];
         xp = xp + xpTable[num][currentEnemy];
         gold = gold + goldTable[num][currentEnemy];
         update();
@@ -524,7 +546,7 @@ function destroyEnemy(num)
 }
 
 function spawn(num,zone) {
-        const health = [[5,6,1,15],[20,32,16,80,400],[100,120,300,200]];
+        const health = [[5,6,1,15],[25,32,30,80,400],[100,120,300,500],[500,600,650,2500,12000]];
         if(num==0)//grunt
         {
             var ran = randint(0,images[zone].length-2);
@@ -565,7 +587,7 @@ function spawn(num,zone) {
 
 function damage()
 {
-    var bossDamage = [1,1,10];
+    var bossDamage = [1,1,10,4];
     pCurrentHealth = pCurrentHealth - bossDamage[currentZone];
     document.getElementById("health").style.width = (pCurrentHealth/pMaxHealth)*100 + "%";
     document.getElementById("healthText").innerHTML = pCurrentHealth + "/" + pMaxHealth;
@@ -578,8 +600,17 @@ function damage()
     document.getElementById("slash").appendChild(img);
     if(pCurrentHealth<1)
     {
-        alert("you died!")
-        progress[currentZone] = 5;
+        myPopup.classList.add("show");
+        document.getElementById("pBox2").innerHTML = "You died!";
+        document.getElementById("pBox").innerHTML = "Try leveling up your power or health. You could also buy a new sword!";
+        if(currentZone==0)
+        {
+            progress[currentZone] = 0;
+        }
+        else
+        {
+            progress[currentZone] = 5;
+        }
         updateProgress();
         endDamage();
     }
@@ -587,6 +618,7 @@ function damage()
 function endDamage()
 {
     clearInterval(interval);
+    interval = null;
     pCurrentHealth = pMaxHealth;
     document.getElementById("health").style.width = (pCurrentHealth/pMaxHealth)*100 + "%";
     document.getElementById("healthText").innerHTML = pCurrentHealth + "/" + pMaxHealth;
@@ -617,7 +649,8 @@ function skillsClick()
     document.getElementById("inventoryImg").src = "dragonImages2/menus/Inventory.png";
     if(tutorialProgress == 3)
     {
-        alert("Click the image of the weight to level up. Make sure to explore the other menus and good luck on your quest!")
+        myPopup.classList.add("show");
+        document.getElementById("pBox").innerHTML = "Click the icons to level up. Once you are done click on the shop to view swords for sale. Good luck on your quest!";
         tutorialProgress += 1;
     }
 }
@@ -654,8 +687,20 @@ document.getElementById("power").onclick = function pClick()
         xp = xp - pCost;
         update();
         document.getElementById("power2").innerHTML = "Power Level: " + powerSave;
-        pCost = Math.round(pCost*1.4);
+        pCost = Math.round(pCost*1.5);
         document.getElementById("powerCost").innerHTML = "Power Cost: " + pCost + "xp";
+    }
+}
+document.getElementById("healthIcon").onclick = function hClick()
+{
+    if(xp>=hCost)
+    {
+        pMaxHealth += 1;
+        xp = xp - hCost;
+        update();
+        document.getElementById("health2").innerHTML = "Health Level: " + pMaxHealth;
+        hCost = Math.round(hCost*1.5);
+        document.getElementById("healthCost").innerHTML = "Health Cost: " + hCost + "xp";
     }
 }
 
@@ -667,6 +712,12 @@ function swordPurchase(num)
 {
     if(gold>=swordPrices[num] && swordOwned[num] == false)
     {
+        if(tutorialProgress == 4)
+        {
+            myPopup.classList.add("show");
+            document.getElementById("pBox").innerHTML = "Click on the treasure chest to open your inventory. Drag your new sword into your hand to equip it!";
+            tutorialProgress += 1;
+        }
 
         gold = gold - swordPrices[num];
         update();
@@ -680,6 +731,8 @@ function swordPurchase(num)
         img.src = shopItems[num][0];
         img.className=shopItems[num][1];
         img.draggable="true";
+        img.style.width="100%";
+        img.style.height="100%";
         img.ondragstart = function(ev){ev.dataTransfer.setData("text", ev.target.id);};
         img.addEventListener("drop", drop);
         var slotNum = 1;

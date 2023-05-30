@@ -30,15 +30,30 @@
             <button class="forward" onclick="changeZone(1)" id="forwardButton" style="visibility:hidden">Next Zone</button>
     </div>
     <div class="split middle" id="main">
-        <p4>Health:</p4>
+        <p4 style="color:white" >Health:</p4>
         <!--<p5>Mana:</p5>-->
         <div class="container" style="top:8%; left:75%"><div class="skill html" id="health"></div><div class="text" id="healthText">10/10</div></div>
          <!--<div class="container" style="top:18%; left: 75%"><div class="skill html" id="mana" style="background-color:blue"></div><div class="text" id="manaText">1/1</div></div>-->
-        <p2 id="gold">Gold: 0</p2>
-        <p2 id="xp">XP: 0</p2>
+         <div style="background-image:url('dragonImages2/backgrounds/stonebrick.jpg'); width:100%">
+            <p2 style="color:gold" id="gold">Gold: 0</p2>
+            <p2 style="color:lightblue" id="xp">XP: 0</p2>
+         </div>
+
         <div>
             <div id="slash"></div>
             <img class="enemy" id="enemy" src="dragonImages2/zone0/enemy1.png" draggable="false">
+            
+          <div id="myPopup" class="popup">
+              <div class="popup-content">
+                  <p3 id="pBox2" style="color:black;text-align:center;">
+                       Tutorial:
+                  </p3>
+                  <p id="pBox" style="color:black;text-align:center;"></p>
+                  <button id="closePopup" >
+                        Close
+                    </button>
+              </div>
+          </div>
         </div>
         <div class="container"><div class="text" id="enemyHealthText">5/5</div><div class="skill html" id="bar"></div></div>
     </div>
@@ -57,6 +72,9 @@
                 <img id="power" src="dragonImages2/icons/power.png" draggable="false">
                 <p3 id="power2">Power Level: 1</p3>
                 <p3 id="powerCost">Power Cost: 5xp</p3>
+                <img id="healthIcon" src="dragonImages2/icons/heart.png" draggable="false">
+                <p3 id="health2">Health Level: 10</p3>
+                <p3 id="healthCost">Health Cost: 5xp</p3>
             </div>
         </div>
 
@@ -64,11 +82,17 @@
             <center><p2>Shop:</p></center>
             <div class="grid-container2" id="shopItems">
                 <img id="swordPurchased0" src="dragonImages2/purchase.png" onmouseover="hovering(this)" onmouseout="hoveringStop(this)" onclick="swordPurchase(0)"></img>
-                <p3>Wooden Sword: 1.5x power for 500 gold</p3>
+                <p3>Wooden Sword: 1.5x power for 100 gold</p3>
                 <img src="dragonImages2/icons/wSword.jpg" width="100vw" draggable="false">
                 <img id="swordPurchased1" src="dragonImages2/purchase.png" onmouseover="hovering(this)" onmouseout="hoveringStop(this)" onclick="swordPurchase(1)"></img>
-                <p3>Root Sword: 2x power for 1000 gold</p3>
+                <p3>Root Sword: 2x power for 500 gold</p3>
                 <img src="dragonImages2/icons/rSword.png" width="100vw" draggable="false">
+                <img id="swordPurchased2" src="dragonImages2/purchase.png" onmouseover="hovering(this)" onmouseout="hoveringStop(this)" onclick="swordPurchase(2)"></img>
+                <p3>Iron Sword: 3x power for 2000 gold</p3>
+                <img src="dragonImages2/icons/iSword.jpg" width="100vw" draggable="false">
+                <img id="swordPurchased3" src="dragonImages2/purchase.png" onmouseover="hovering(this)" onmouseout="hoveringStop(this)" onclick="swordPurchase(3)"></img>
+                <p3>Demon Sword: 10x power for 10000 gold</p3>
+                <img src="dragonImages2/icons/dSword.png" width="100vw" draggable="false">
             </div>
         </div>
 
@@ -82,7 +106,7 @@
             <div style="position:fixed; right:2%">
                 <p2 style="position:relative; left:25%">Inventory:</p2>
                 <div class="grid-container4">
-                    <div class="inventoryContainer" id="invslot1" ondrop="drop(event)" ondragover="allowDrop(event)"><img src="dragonImages2/mouse.jpg" class="helmet" draggable="true" ondragstart="drag(event)" id="slot1" width="88" height="31"></div>
+                    <div class="inventoryContainer" id="invslot1" ondrop="drop(event)" ondragover="allowDrop(event)"><img src="dragonImages2/mouse.jpg" style="width:100%;height:100%"class="helmet" draggable="true" ondragstart="drag(event)" id="slot1" width="88" height="31"></div>
                     <div class="inventoryContainer" id="invslot2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                     <div class="inventoryContainer" id="invslot3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                     <div class="inventoryContainer" id="invslot4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>

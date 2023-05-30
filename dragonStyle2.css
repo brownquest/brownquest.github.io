@@ -50,9 +50,9 @@
 }
 .middle {
   right: 33.333%;
-  background-image: url("dragonImages2/backgrounds/dungeon.jpg");
+  background-image: url("dragonImages2/backgrounds/corner.jpg");
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size:auto 100%;;
   background-position: center;
   
 }
@@ -113,6 +113,9 @@ p {
 
 .custom {
   cursor: url("dragonImages2/cursors/fist1.cur"), auto;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 
@@ -135,7 +138,7 @@ p {
   background-color: rgb(230, 52, 52);
   justify-content: right;
   width: 100%;
-      border-radius: 15px;
+      border-radius: 20px;
   height: 100%;
 }
 
@@ -238,9 +241,12 @@ img {
   --placeholder--: 10;
 }
 .boots{
-  --placeholder--: 10;
+  --placeholder--: 10
 }
 .weapon{
+  --placeholder--: 10;
+}
+.w0{
   --placeholder--: 10;
 }
 .w1{
@@ -249,5 +255,36 @@ img {
 .w2{
   --placeholder--: 10;
 }
+.w3{
+  --placeholder--: 10;
+}
 
-
+ .popup {
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: none;
+        }
+        .popup-content {
+            background-color: lightgray;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888888;
+            width: 30%;
+            font-weight: bolder;
+        }
+        .popup-content button {
+            display: block;
+            margin: 0 auto;
+        }
+        .show {
+            display: block;
+        }
+        h1 {
+            color: green;
+        }
