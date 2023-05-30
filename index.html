@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="dragonStyle2.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body style="background-color:gray" class="custom" id="page">
+    
+
+    <div class="split left">
+        <a href="https://firebolt195.github.io" class="back">Back</a>
+        <center><p2>Progress:</p2></center>
+        <div class="grid-container3">
+            <img id="skull1" src="dragonImages2/skulls/skull.png" draggable="false" style="display:block">
+            <img id="skull2" src="dragonImages2/skulls/skull.png" draggable="false" style="display:block">
+            <img id="skull3" src="dragonImages2/skulls/skull.png" draggable="false" style="display:block">
+            <img id="skull4" src="dragonImages2/skulls/skull.png" draggable="false" style="display:block">
+            <img id="skull5" src="dragonImages2/skulls/miniboss.png" draggable="false" style="display:block">
+            <img id="skull6" src="dragonImages2/skulls/skull.png" draggable="false" style="display:none">
+            <img id="skull7" src="dragonImages2/skulls/skull.png" draggable="false" style="display:none">
+            <img id="skull8" src="dragonImages2/skulls/skull.png" draggable="false" style="display:none">
+            <img id="skull9" src="dragonImages2/skulls/skull.png" draggable="false" style="display:none">
+            <img id="skull10" src="dragonImages2/skulls/boss.png" draggable="false" style="display:none">
+        </div>
+            <center><p2 id="freeplaytext" style="visibility:hidden">Freeplay:</p2></center>
+            <center><img id="freeplay" src="dragonImages2/skulls/skull.png" onclick="freeplay(currentZone)" width="100vw" draggable="false" style="visibility: hidden"></center>
+            <button class="last" onclick="changeZone(0)" id="backButton" style="visibility:hidden">Previous Zone</button>
+            <button class="forward" onclick="changeZone(1)" id="forwardButton" style="visibility:hidden">Next Zone</button>
+    </div>
+    <div class="split middle" id="main">
+        <p4>Health:</p4>
+        <!--<p5>Mana:</p5>-->
+        <div class="container" style="top:8%; left:75%"><div class="skill html" id="health"></div><div class="text" id="healthText">10/10</div></div>
+         <!--<div class="container" style="top:18%; left: 75%"><div class="skill html" id="mana" style="background-color:blue"></div><div class="text" id="manaText">1/1</div></div>-->
+        <p2 id="gold">Gold: 0</p2>
+        <p2 id="xp">XP: 0</p2>
+        <div>
+            <div id="slash"></div>
+            <img class="enemy" id="enemy" src="dragonImages2/zone0/enemy1.png" draggable="false">
+        </div>
+        <div class="container"><div class="text" id="enemyHealthText">5/5</div><div class="skill html" id="bar"></div></div>
+    </div>
+
+
+    <div class="split right"> 
+    <div style="margin: 0.5vw">
+        <img id="inventoryImg" src="dragonImages2/menus/InventorySelected.png" width="15%" style="margin:2%" draggable="false" onclick="inventoryClick()">
+        <img id="levelImg" src="dragonImages2/menus/levelup.png" width="15%" style="margin:2%" draggable="false" onclick="skillsClick()">
+        <img id="shopImg" src="dragonImages2/menus/shop.png" width="15%" style="margin:2%" draggable="false" onclick="shopClick()">
+        <img id="optionsImg" src="dragonImages2/menus/options.png" width="15%" style="margin:2%" draggable="false" onclick="optionsClick()">
+
+        <div id="skills" hidden="true">
+            <center><p2>Skills:</p2></center>
+            <div class="grid-container2">
+                <img id="power" src="dragonImages2/icons/power.png" draggable="false">
+                <p3 id="power2">Power Level: 1</p3>
+                <p3 id="powerCost">Power Cost: 5xp</p3>
+            </div>
+        </div>
+
+        <div id="shop" hidden="true">
+            <center><p2>Shop:</p></center>
+            <div class="grid-container2" id="shopItems">
+                <img id="swordPurchased0" src="dragonImages2/purchase.png" onmouseover="hovering(this)" onmouseout="hoveringStop(this)" onclick="swordPurchase(0)"></img>
+                <p3>Wooden Sword: 1.5x power for 500 gold</p3>
+                <img src="dragonImages2/icons/wSword.jpg" width="100vw" draggable="false">
+                <img id="swordPurchased1" src="dragonImages2/purchase.png" onmouseover="hovering(this)" onmouseout="hoveringStop(this)" onclick="swordPurchase(1)"></img>
+                <p3>Root Sword: 2x power for 1000 gold</p3>
+                <img src="dragonImages2/icons/rSword.png" width="100vw" draggable="false">
+            </div>
+        </div>
+
+        <div id="options" hidden="true">
+            <center><p2>Options:</p2></center>
+            <center><button class="cursorButton" width="200vw" height="100vw" onclick="changeColor()" id="cursorButton" cursor="url('dragonImages2/fists/fist1.cur'), auto">Change Fist Color</button></center>
+        </div>
+
+
+        <div id="inventory">
+            <div style="position:fixed; right:2%">
+                <p2 style="position:relative; left:25%">Inventory:</p2>
+                <div class="grid-container4">
+                    <div class="inventoryContainer" id="invslot1" ondrop="drop(event)" ondragover="allowDrop(event)"><img src="dragonImages2/mouse.jpg" class="helmet" draggable="true" ondragstart="drag(event)" id="slot1" width="88" height="31"></div>
+                    <div class="inventoryContainer" id="invslot2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div class="inventoryContainer" id="invslot3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div class="inventoryContainer" id="invslot4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div class="inventoryContainer" id="invslot5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div class="inventoryContainer" id="invslot6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div class="inventoryContainer" id="invslot7" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div class="inventoryContainer" id="invslot8" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div class="inventoryContainer" id="invslot9" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div class="inventoryContainer" id="invslot10" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div class="inventoryContainer" id="invslot11" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div class="inventoryContainer" id="invslot12" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                </div>
+            </div>
+            <div style="position:fixed">
+                <div class="grid-container5">
+                    <p2>Equiped:</p2>
+                    <div style="background-image: url('dragonImages2/icons/helmetIcon.png'); background-size:cover;" class="inventoryContainer helmet" id="invsloth" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div style="background-image: url('dragonImages2/icons/chestplateIcon.png'); background-size:cover;" class="inventoryContainer chestplate" id="invslotc" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div style="background-image: url('dragonImages2/icons/bootIcon.png'); background-size:cover;" class="inventoryContainer boots" id="invslotb" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div style="background-image: url('dragonImages2/cursors/fist1.cur'); background-size:cover;" class="inventoryContainer weapon" id="invslotw" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    </div>
+        
+   
+</body>
+<script src="dragonScript2.js"></script>

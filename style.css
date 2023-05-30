@@ -1,0 +1,13 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px;
+    justify-content: center;
+    
+  }
+  .item1 {
+    grid-column: 2 / 4;
+  }
+  .button1{
+    width: 200px;
+  }
+  

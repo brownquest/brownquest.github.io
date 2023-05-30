@@ -1,0 +1,253 @@
+:root {
+  --change: 0%;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 17vw;
+    justify-content: center;
+  }
+  .grid-container2 {
+    display: grid;
+    grid-template-columns: 10vw 15vw 8vw;
+    justify-content: left;
+  }
+
+  .grid-container3 {
+    display: grid;
+    grid-template-columns: 6vw 6vw 6vw 6vw 6vw;
+    justify-content: center;
+    grid-gap: 0.3vw;
+    background-color: white;
+    padding: 0.3vw;
+    margin: 0.8vw;
+  }
+
+  .grid-container4{
+    display: grid;
+    grid-template-columns: 7vw 7vw 7vw;
+  }
+  .grid-container5{
+    display: grid;
+    grid-template-columns: 7vw;
+  }
+
+.split {
+  height: 100%;
+  width: 33.333%;
+  position: fixed;
+  top: 0;
+}
+.right {
+  left: 66.666%;
+  background-image: url("dragonImages2/backgrounds/stonebrick.jpg");
+ 
+}
+.left{
+  left: 0%;
+  background-image: url("dragonImages2/backgrounds/stonebrick.jpg");
+  
+}
+.middle {
+  right: 33.333%;
+  background-image: url("dragonImages2/backgrounds/dungeon.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  
+}
+
+.forward{
+  position:absolute;
+  right: 5%;
+  bottom: 5%;
+}
+.last{
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
+}
+
+
+p6 {
+  font-family: papyrus; 
+  font-size: 2vw;
+  color: white;
+}
+
+p4 {
+  font-family: papyrus; 
+  font-size: 2vw;
+  color: lightgrey;
+  position: absolute;
+  top: 0%;
+  left: 67%;
+}
+p5 {
+  font-family: papyrus; 
+  font-size: 2vw;
+  color: lightgrey;
+  position: absolute;
+  top: 10%;
+  left: 67%;
+}
+
+p3 {
+  font-family: papyrus; 
+  font-size: 2vw;
+  color: white;
+  display:block;
+}
+p2 {
+  font-family: papyrus; 
+  font-size: 2.5vw;
+  color: white;
+  display:block;
+  }
+
+p {
+  font-family: papyrus; 
+  font-size: 1vw;
+  color: white;
+}
+
+.custom {
+  cursor: url("dragonImages2/cursors/fist1.cur"), auto;
+}
+
+
+.container {
+  background-color: darkgrey;
+  width: 40%;
+      border-radius: 1.75vw;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  border-width: 3px;
+  border-style: solid;
+  border-color: black;
+  height: 1.75vw;
+}
+
+.skill {
+  background-color: rgb(230, 52, 52);
+  justify-content: right;
+  width: 100%;
+      border-radius: 15px;
+  height: 100%;
+}
+
+.text {
+  position: absolute;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  left: 50%;
+  top: 50%;
+  color: white;
+  font-size: 20px;
+}
+
+.equip {
+  width: 80px;
+  height: 20px;
+  position: relative;
+  top: .5vw;
+  margin: 1vw;
+}
+
+.enemy{
+  position:absolute;
+  width: 60%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  top: 70%;
+  left: 50%;
+  
+  
+}
+
+.back{
+  position:absolute;
+  color: blue;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  width: auto\9; 
+}
+
+.cursorButton {
+  cursor: url('dragonImages2/cursors/fist1.cur'), auto;
+}
+
+@keyframes slashAnimation {
+ from
+ {
+  opacity: 1;
+ }
+ to
+ {
+  opacity: 0;
+ }
+}
+
+
+
+.slashClass {
+  position:absolute;
+  width: 60%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  top: 70%;
+  left: 50%;
+  pointer-events: none;
+  opacity: 0;
+  animation-name: slashAnimation;
+  animation-duration: 0.3s;
+  z-index: 10;
+}
+
+.coinClass {
+  position:absolute;
+  width: 10%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  top: 70%;
+  left: 50%;
+  pointer-events: none;
+  opacity: 1;
+  z-index: 10;
+}
+
+.inventoryContainer{
+  float: left;
+  width: 6vw;
+  height: 6vw;
+  margin: 0.25vw;
+  padding: 0.2vw;
+  border: 0.2vw solid darkgrey;
+  background-color:grey
+}
+.helmet{
+  --placeholder--: 10;
+}
+.chestplate{
+  --placeholder--: 10;
+}
+.boots{
+  --placeholder--: 10;
+}
+.weapon{
+  --placeholder--: 10;
+}
+.w1{
+  --placeholder--: 10;
+}
+.w2{
+  --placeholder--: 10;
+}
+
+

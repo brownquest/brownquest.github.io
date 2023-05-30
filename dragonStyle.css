@@ -1,0 +1,43 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 120px 200px;
+    justify-content: center;
+  }
+
+.split {
+  height: 100%;
+  width: 33.333%;
+  position: fixed;
+  top: 0;
+}
+.right {
+  left: 66.666%;
+  background-image: url("dragonImages/stonebrick.jpg");
+}
+.left{
+  left: 0%;
+  background-image: url("dragonImages/stonebrick.jpg");
+}
+.middle {
+  right: 33.333%;
+  background-image: url("dragonImages/forest.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+p2 {
+  font-family: papyrus; 
+  font-size: 250%;
+  color: white;
+}
+
+p {
+  font-family: papyrus; 
+  font-size: 100%;
+  color: white;
+}
+
+.custom {
+  cursor: url("dragonImages/cursor5.cur"), auto;
+}

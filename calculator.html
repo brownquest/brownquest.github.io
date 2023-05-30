@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+
+
+<body style="background-color:mediumslateblue;">
+
+<a href="https://firebolt195.github.io">Back</a>
+<h1><center>Calculator</center></h1>
+<center><p id="calc"></p></center>
+
+
+    <div class="grid-container">
+        <button type="button" onclick=buttonPress(7)>7</button>
+        <button type="button" onclick=buttonPress(8)>8</button>
+        <button type="button" onclick=buttonPress(9)>9</button>
+        <button type="button" onclick="buttonPress('+')">+</button>
+        <button type="button" onclick=buttonPress(4)>4</button>
+        <button type="button" onclick=buttonPress(5)>5</button>
+        <button type="button" onclick=buttonPress(6)>6</button>
+        <button type="button" onclick="buttonPress('-')">-</button>
+        <button type="button" onclick=buttonPress(1)>1</button>
+        <button type="button" onclick=buttonPress(2)>2</button>
+        <button type="button" onclick=buttonPress(3)>3</button>
+        <button type="button" onclick="buttonPress('*')">*</button>
+        <button type="button" onclick=buttonPress(0)>0</button>
+        <div class="item1">
+            <button type="button" class="button1" onclick="calculate()">calculate</button>
+        </div>
+        <button type="button" onclick="buttonPress('/')">/</button>
+        
+        
+    </div>
+
+    <center><button type="button" onclick="clearIt()" style = "margin-top: 10px" >clear</button></center>
+
+<h2><center>Dice Calculator</center></h2>
+<center><p id="dice"></p></center>
+
+<div class="grid-container">
+    <button type="button" onclick=dicePress(7)>7</button>
+    <button type="button" onclick=dicePress(8)>8</button>
+    <button type="button" onclick=dicePress(9)>9</button>
+    <button type="button" onclick=dicePress(0)>0</button>
+    <button type="button" onclick=dicePress(4)>4</button>
+    <button type="button" onclick=dicePress(5)>5</button>
+    <button type="button" onclick=dicePress(6)>6</button>
+    <button type="button" onclick="dicePress('d')">d</button>
+    <button type="button" onclick=dicePress(1)>1</button>
+    <button type="button" onclick=dicePress(2)>2</button>
+    <button type="button" onclick=dicePress(3)>3</button>
+    <button type="button" onclick=diceCalc()>calculate</button>
+</div>
+
+<center><button type="button" onclick="diceClear()" style="margin:10px" >clear</button></center>
+<center><p1>Roll: <p2 id = "roll"></p2></p1></center>
+<center><p1>Average: <p2 id = "average"></p2></p1></center>
+<center><div class="slidecontainer"><input type="range" min="1" max="30" value="10" class="slider" id="myRange"></div></center>
+<center><p1>AC: <p2 id = "ac"></p2></p1></center>
+<center><div class="slidecontainer"><input type="range" min="-10" max="20" value="0" class="slider" id="myRange2"></div></center>
+<center><p1>Bonus to Hit: <p2 id = "toHit"></p2></p1></center>
+<center><p1>Average With AC: <p2 id = "acAverage"></p2></p1></center>
+
+
+
+</body>
+
+<script src="calculatorScript.js"></script>
+<script src="diceCalculatorScript.js"></script>
+</html>
